@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <h1 class="text-2xl font-bold mb-4">👨‍💼 Panel de Administración</h1>
+    <form id="form-agregar" class="mb-4 flex flex-wrap gap-2">
+        <input type="text" id="nombre" placeholder="Nombre" class="p-2 border rounded" required>
+        <input type="number" id="precio" placeholder="Precio" class="p-2 border rounded" required>
+        <input type="text" id="categoria" placeholder="Categoría" class="p-2 border rounded" required>
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Agregar</button>
+    </form>
+    <ul id="lista-admin" class="space-y-2"></ul>
+    <script>
+    const lista = document.getElementById('lista-admin');
+    const form = document.getElementById('form-agregar');
+    let productos = JSON.parse(localStorage.getItem('adminProductos')) || [];
+
+    function renderLista() {
+        lista.innerHTML = "";
+        productos.forEach((p, i) => {
+            const li = document.createElement('li');
+            li.className = "bg-white p-3 shadow rounded flex justify-between items-center";
+            li.innerHTML = `<span>${p.nombre} - $${p.precio} (${p.categoria})</span>
+            <button onclick="eliminar(${i})" class="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>`;
+            lista.appendChild(li);
+        });
+    }
+
+    function eliminar(i) {
+        productos.splice(i, 1);
+        localStorage.setItem('adminProductos', JSON.stringify(productos));
+        renderLista();
+    }
+
+    form.onsubmit = e => {
+        e.preventDefault();
+        const nuevo = {
+            nombre: document.getElementById('nombre').value,
+            precio: parseFloat(document.getElementById('precio').value),
+            categoria: document.getElementById('categoria').value
+        };
+        productos.push(nuevo);
+        localStorage.setItem('adminProductos', JSON.stringify(productos));
+        form.reset();
+        renderLista();
+    };
+
+    renderLista();
+    </script>
+</body>
+</html>

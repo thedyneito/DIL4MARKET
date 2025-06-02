@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body onload="mostrarUsuario();" class="bg-gray-100 p-6">
+    <div class="flex justify-between items-center">
+<h1 class="text-2xl font-bold mb-4">📦 Pedidos Recibidos</h1>
+<span id="usuario-nombre" class="text-sm text-gray-500"></span>
+</div>
+    <ul id="pedidos-lista" class="space-y-4"></ul>
+    <script>
+    const lista = document.getElementById('pedidos-lista');
+    const pedidos = JSON.parse(localStorage.getItem('historialCompras')) || [];
+
+    if (pedidos.length === 0) {
+        lista.innerHTML = "<p class='text-gray-600'>No hay pedidos aún.</p>";
+    } else {
+        pedidos.forEach((pedido, i) => {
+            const li = document.createElement('li');
+            li.className = "bg-white p-4 rounded shadow";
+            li.innerHTML = \`
+                <p class="font-semibold">Pedido #\${i + 1} - \${pedido.fecha}</p>
+                <ul class="list-disc pl-5">
+                    \${pedido.productos.map(p => `<li>\${p.nombre} - $${p.precio}</li>`).join('')}
+                </ul>
+                <p class="mt-2 font-bold">Total: $ \${pedido.total}</p>
+            \`;
+            lista.appendChild(li);
+        });
+    }
+    </script>
+</body>
+</html>

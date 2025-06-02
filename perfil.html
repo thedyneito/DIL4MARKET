@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Perfil - DilaMarket</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <div class="max-w-3xl mx-auto p-6 mt-10 bg-white rounded shadow">
+    <h1 class="text-2xl font-bold text-purple-700 mb-6">👤 Mi Perfil</h1>
+    <div class="space-y-2">
+      <p><strong>Nombre:</strong> <span id="perfil-nombre">Cargando...</span></p>
+      <p><strong>Correo:</strong> cliente@dilamarket.com</p>
+      <p><strong>Miembro desde:</strong> Junio 2024</p>
+    </div>
+    <div class="mt-6">
+      <a href="historial.html" class="text-indigo-600 hover:underline">🧾 Ver historial de compras</a><br/>
+      <a href="factura.html" class="text-indigo-600 hover:underline">📄 Ver facturas</a><br/>
+      <button onclick="cerrarSesion()" class="mt-4 bg-red-600 text-white px-4 py-2 rounded">Cerrar sesión</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById("perfil-nombre").textContent = localStorage.getItem("nombre") || "Usuario";
+  </script>
+</body>
+</html>

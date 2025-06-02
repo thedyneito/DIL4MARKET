@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DilaMarket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="productos.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body onload="init();" class="bg-gray-50 text-gray-800 font-sans">
+
+<header class="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 text-white flex justify-between items-center">
+    <div class="flex items-center gap-2">
+        <img src="logo.png" alt="DilaMarket Logo" class="h-10">
+        <span class="text-2xl font-bold">DilaMarket</span>
+    </div>
+    <nav class="space-x-4">
+        <a href="index.html" class="hover:underline">Inicio</a>
+        <a href="index.html#product-container" class="hover:underline">Productos</a>
+        <a href="#" class="hover:underline">Ofertas</a>
+        <a href="contacto.html" class="hover:underline">Contacto</a>
+    </nav>
+
+        <a href="perfil.html" class="mr-4 text-white hover:underline text-sm">Perfil</a>
+        <a href="carrito.html" class="relative">
+
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/shopping-cart.png" class="inline">
+        <span id="contador-carrito" class="absolute -top-2 -right-2 bg-red-500 text-xs px-1 rounded-full text-white">0</span>
+    </a>
+<div id="usuario-nombre" class="text-sm text-white text-right pr-4"></div>
+</header>
+
+    <section class="text-center py-10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
+        <h1 class="text-3xl font-bold mb-2">Bienvenido a DilaMarket</h1>
+        <p class="mb-4">Los mejores productos al mejor precio</p>
+        <div class="max-w-xl mx-auto flex items-center">
+            <input type="text" placeholder="Buscar productos..." class="flex-grow p-2 rounded-l-full text-black" />
+            <button class="bg-white text-purple-700 px-4 py-2 rounded-r-full">🔍</button>
+        </div>
+    </section>
+    <section class="py-6 px-4">
+        <div class="text-center mb-4"><h2 class="text-xl font-bold">Categorías</h2></div>
+        <div class="flex justify-center flex-wrap gap-4">
+            <button onclick="filtrarPorCategoria('Todos')" class="bg-purple-600 text-white px-4 py-2 rounded-full">Todos</button>
+            <button onclick="filtrarPorCategoria('Electrónicos')" class="bg-gray-200 px-4 py-2 rounded-full">Electrónicos</button>
+            <button onclick="filtrarPorCategoria('Hogar')" class="bg-gray-200 px-4 py-2 rounded-full">Hogar</button>
+            <button onclick="filtrarPorCategoria('Ropa')" class="bg-gray-200 px-4 py-2 rounded-full">Ropa</button>
+            <button onclick="filtrarPorCategoria('Deportes')" class="bg-gray-200 px-4 py-2 rounded-full">Deportes</button>
+            <button onclick="filtrarPorCategoria('Juguetes')" class="bg-gray-200 px-4 py-2 rounded-full">Juguetes</button>
+        </div>
+    </section>
+    <section class="px-4 py-8">
+        <h3 class="text-xl font-semibold mb-4">⭐ Productos Destacados</h3>
+        <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+    </section>
+    <footer class="bg-gray-800 text-white p-8 grid md:grid-cols-4 gap-4">
+        <div><h4 class="font-bold mb-2">🛍️ DilaMarket</h4><p>Tu tienda virtual favorita con los mejores productos al mejor precio.</p></div>
+        <div><h4 class="font-bold mb-2">Categorías</h4><ul><li>Electrónicos</li><li>Hogar</li><li>Ropa</li><li>Deportes</li></ul></div>
+        <div><h4 class="font-bold mb-2">Ayuda</h4><ul><li>Preguntas frecuentes</li><li>Envíos</li><li>Devoluciones</li><li>Contacto</li></ul></div>
+        <div><h4 class="font-bold mb-2">Medios de Pago</h4><div class="grid grid-cols-3 gap-2">
+            <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+            <img src="https://img.icons8.com/color/48/000000/mastercard.png"/>
+            <img src="https://img.icons8.com/color/48/000000/amex.png"/>
+            <img src="https://img.icons8.com/color/48/000000/paypal.png"/>
+            <img src="https://img.icons8.com/color/48/000000/cash.png"/>
+            <img src="https://img.icons8.com/color/48/000000/bank-building.png"/>
+        </div></div>
+    </footer>
+</body>
+</html>
